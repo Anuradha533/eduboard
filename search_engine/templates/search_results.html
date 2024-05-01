@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+{% block head %}
+
+{% endblock %}
+
+
+<div id="app" class="uk-container uk-container-medium uk-padding">
+    {% if items %}
+        <div class="uk-child-width-1-3@m uk-grid-match" uk-grid>
+            {% if type == 'Teacher' %}
+                {% for item in items %}
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <h3 class="uk-card-title">
+                                <a href="{{ url_for('profile.view_other_profile', user_id=item.id) }}">{{ item.full_name }}</a>
+                            </h3>
+                            <p class="uk-text-meta">
+                                <span uk-icon="icon: education"></span> {{ item.specialty }} |
+                                <span uk-icon="icon: history"></span> {{ item.experience_years }} Years of Experience
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% elif type == 'student' %}
+                {% for item in items %}
+               
+                      
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <h3 class="uk-card-title">
+                                <a href="{{ url_for('profile.view_other_profile', user_id=item.id) }}">{{ item.full_name }}</a>
+                            </h3>
+                            <p class="uk-text-meta">
+                                <span uk-icon="icon: user"></span> {{ item.gender }}
+                            </p>
+                        </div>
+                    </div>  
+                                 
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</div>
+      
+{% endblock %}

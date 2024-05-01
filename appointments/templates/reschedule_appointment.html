@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Reschedule Appointment{% endblock %}
+{% block content %}
+<div class="uk-container uk-padding">
+    <h1>Reschedule Appointment</h1>
+    <form method="POST" class="uk-form-stacked">
+        {{ form.hidden_tag() }}
+        <div class="uk-margin">
+            <label class="uk-form-label">{{ form.title.label }}</label>
+            <div class="uk-form-controls">
+                {{ form.title(size=40, class="uk-input") }}
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label">{{ form.description.label }}</label>
+            <div class="uk-form-controls">
+                {{ form.description(rows=4, cols=40, class="uk-textarea") }}
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label">{{ form.start_time.label }}</label>
+            <div class="uk-form-controls">
+                {{ form.start_time(class="uk-input") }}
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label">{{ form.end_time.label }}</label>
+            <div class="uk-form-controls">
+                {{ form.end_time(class="uk-input") }}
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label">{{ form.Teacher_id.label }}</label>
+            <div class="uk-form-controls">
+                {{ form.Teacher_id(class="uk-input") }}
+            </div>
+        </div>
+        <div class="uk-margin">
+            {{ form.submit(class="uk-button uk-button-primary") }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

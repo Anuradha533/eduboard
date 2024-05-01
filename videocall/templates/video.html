@@ -1,0 +1,59 @@
+{% extends "base.html" %}  {% block content%}
+<div id="app">
+  <div class="uk-container uk-margin-large">
+    <div class="uk-grid" v-if="isLoggedIn">
+      <div class="uk-width-1-1">
+        <div class="uk-child-width-auto uk-grid-small uk-grid-match" uk-grid>
+          {% for singleUser in allUsers %}
+            {% if singleUser['id'] != current_user['id'] %}
+              {% set username = singleUser.email %}
+              <div>
+                <button class="uk-button uk-button-primary" @click="placeCall('{{ username }}')">
+                  Call {{ username }}
+                  <span class="uk-badge" :class="{ 'uk-label-primary': updatedOnlineStatus['{{ username }}']?.toLowerCase() === 'online', 'uk-label-danger': updatedOnlineStatus['{{ username }}']?.toLowerCase() === 'offline' }">
+                    ${ updatedOnlineStatus['{{ username }}']?.toLowerCase() || 'offline' }
+                  </span>
+                </button>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-alert-warning uk-margin-large" v-if="isCallingUser" uk-alert>
+      <p>${ callingUserNotification }</p>
+      <button class="uk-button uk-button-danger" @click="cancelCall">Cancel Call</button>
+    </div>
+
+    <div class="uk-alert-warning uk-margin-large" v-if="incomingCall" uk-alert>
+      <p>${ incomingCallNotification }</p>
+      <div class="uk-button-group">
+        <button class="uk-button uk-button-danger" @click="declineCall">Decline</button>
+        <button class="uk-button uk-button-success" @click="acceptCall">Accept</button>
+      </div>
+    </div>
+
+    <section id="video-container" v-if="callPlaced" class="uk-margin">
+      <div class="uk-grid uk-grid-match">
+        <div class="uk-width-1-2@m">
+          <div id="local-video" ref="localVideo"></div>
+        </div>
+        <div class="uk-width-1-2@m">
+          <div id="remote-video" ref="remoteVideo"></div>
+        </div>
+      </div>
+      <div class="uk-margin-top">
+        <button class="uk-button uk-button-default" @click="handleAudioToggle">
+          ${ mutedAudio ? "Unmute" : "Mute" }
+        </button>
+        <button class="uk-button uk-button-primary uk-margin-small-left uk-margin-small-right" @click="handleVideoToggle">
+          ${ mutedVideo ? "Show Video" : "Hide Video" }
+        </button>
+        <button class="uk-button uk-button-danger" @click="endCall">End Call</button>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock content %}
+

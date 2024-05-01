@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+{% block head %}
+
+{% endblock %}
+<style>
+    .chat-panel {
+        height: 50vh;
+        overflow-y: scroll;
+    }
+    .message-left {
+        background-color: #f8f8f8;
+        padding: 10px;
+        max-width: 70%;
+    }
+    .message-right {
+        background-color: #002855;
+        color: #fff;
+        padding: 10px;
+        max-width: 70%;
+        margin-left: auto;
+    }
+</style>
+<div class="uk-container">
+
+<div class="uk-grid uk-grid-collapse uk-grid-column-large" uk-grid>
+    <div class="uk-width-1-4@m">
+        <div class="uk-panel uk-panel-box">
+            <h3>Chats</h3>
+            <div class="uk-search uk-search-default">
+                <span uk-search-icon></span>
+                <input class="uk-search-input" type="search" placeholder="Search...">
+            </div>
+            <ul id="sidebar" class="uk-nav uk-nav-side uk-margin-top">
+                {% for user_id, user_info in online_users.items() %}
+                    {% if user_id != current_user.id %}
+                        <li>
+                            <a href="{{ url_for('chat.room', user_id=user_info['id']) }}" id="{{ user_info['email']|title }}" class="select-room uk-active">
+                                <img class="uk-border-circle uk-margin-small-right avatar" src="{{ user_info['icon'] }}" alt="User Avatar">
+                                {{ user_info['email']|title }}
+                                {% if online_status.get(user_id) %}
+                                    <span class="badge badge-success">Online</span>
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            
+        </div>
+    </div>
+    <div class="uk-width-3-4@m">
+        <div class="uk-panel uk-panel-box uk-panel-box-primary">
+            <h3 class="uk-panel-title">Chat with {{recipient_user.email}}</h3>
+
+            <div id="display-message-section" class="chat-panel uk-panel uk-panel-box uk-margin-top">
+                {% for message in messages %}
+                    {% if message.sender_id == current_user.id %}
+                        <div class="uk-panel message-right uk-margin-small-top uk-margin-small-bottom">
+                            <p class="uk-margin-remove">{{ message.content }}</p>
+                            <span class="uk-text-meta uk-text-small">{{ message.timestamp.strftime('%I:%M %p') }}</span>
+                        </div>
+                    {% else %}
+                        <div class="uk-panel message-left uk-margin-small-bottom">
+                            <p class="uk-margin-remove">{{ message.content }}</p>
+                            <span class="uk-text-meta uk-text-small">{{ message.timestamp.strftime('%I:%M %p') }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            
+            </div>
+
+            <div id="input-area" class="uk-panel uk-panel-box uk-margin-top">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="uk-grid uk-grid-small">
+                        <div class="uk-width-9-10">
+                            {{ form.content(class="uk-input") }}
+                        </div>
+                        <div class="uk-width-1-10 uk-margin-top">
+                            {{ form.submit(class="uk-button uk-button-primary") }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+{% endblock %}

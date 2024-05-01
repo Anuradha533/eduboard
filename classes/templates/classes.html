@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Create Class{% endblock %}
+{% block content %}
+<h1>All Classes</h1>
+<ul>
+{% for class in classes %}
+    <li><a href="{{ url_for('classes.view_class', class_id=class.id) }}">{{ class.title }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

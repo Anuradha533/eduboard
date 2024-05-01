@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Assignments{% endblock %}
+{% block content %}
+<h1>All Assignments</h1>
+<ul>
+{% for assignment in assignments %}
+    <li>
+        <li><a href="{{ url_for('classes.view_assignment', assignment_id=assignment.id) }}">{{ assignment.title }}</a></li>
+        <p>Description: {{ assignment.description }}</p>
+        <p>Due Date: {{ assignment.due_date }}</p>
+        <p>Class: {{ assignment.assigned_class.title }}</p>
+        <!-- Add more details as needed -->
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

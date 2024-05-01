@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+{% block head %}
+
+{% endblock %}    
+    <div class="uk-container uk-container-xsmall uk-padding">
+        <h1>Edit Profile</h1>
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            
+            <div class="uk-margin">
+                {{ form.full_name.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.full_name(class="uk-input") }}
+                    {% for error in form.full_name.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="uk-margin">
+                {{ form.date_of_birth.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.date_of_birth(class="uk-input") }}
+                    {% for error in form.date_of_birth.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="uk-margin">
+                {{ form.address.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.address(class="uk-input") }}
+                    {% for error in form.address.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="uk-margin">
+                {{ form.phone_number.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.phone_number(class="uk-input") }}
+                    {% for error in form.phone_number.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="uk-margin">
+                {{ form.gender.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.gender(class="uk-select") }}
+                    {% for error in form.gender.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            {% if form.blood_group %}
+            <div class="uk-margin">
+                {{ form.blood_group.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.blood_group(class="uk-select") }}
+                    {% for error in form.blood_group.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if form.allergies %}
+            <div class="uk-margin">
+                {{ form.allergies.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.allergies(class="uk-input") }}
+                    {% for error in form.allergies.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if form.medical_history %}
+            <div class="uk-margin">
+                {{ form.medical_history.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.medical_history(class="uk-input") }}
+                    {% for error in form.medical_history.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            <div class="uk-margin">
+                <button type="submit" class="uk-button uk-button-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+            
+      
+{% endblock %}

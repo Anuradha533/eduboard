@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Create Assignment{% endblock %}
+{% block content %}
+    <div class="uk-container uk-container-xsmall uk-padding">
+        <h1>Create Assignment</h1>
+        <form method="POST" class="uk-form-stacked">
+            {{ form.hidden_tag() }}
+            <div class="uk-margin">
+                {{ form.title.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.title(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                {{ form.description.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.description(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                {{ form.due_date.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.due_date(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                {{ form.submit(class="uk-button uk-button-primary") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

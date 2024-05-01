@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block title %}Onboarding{% endblock %}
+{% block content %}
+<div class="uk-container uk-container-xsmall uk-padding">
+
+    {% if current_user.is_Teacher %}
+
+    <form method="POST" action="" enctype="multipart/form-data" class="uk-form-stacked">
+        {{ form.hidden_tag() }}
+            <legend class="uk-legend">Teacher Details</legend>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.full_name.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.full_name(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.date_of_birth.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.date_of_birth(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.address.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.address(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.phone_number.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.phone_number(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.gender.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.gender(class="uk-select") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.specialty.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.specialty(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.qualifications.label }}</label>
+                <div uk-form-custom="target: true">
+                    {{ form.qualifications() }}
+                    <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" aria-label="Custom controls" disabled>
+
+                </div>
+            </div>
+        
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.experience_years.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.experience_years(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.School_name.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.School_name(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.consultation_fee.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.consultation_fee(class="uk-input") }}
+                </div>
+            </div>
+            <button type="submit" class="uk-button uk-button-primary">Submit</button>
+    </form>
+
+    {% else %}
+    <form method="POST" action="" class="uk-form-stacked">
+        {{ form.hidden_tag() }}
+            <legend class="uk-legend">student Details</legend>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.full_name.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.full_name(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.date_of_birth.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.date_of_birth(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.address.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.address(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.phone_number.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.phone_number(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.gender.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.gender(class="uk-select") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.blood_group.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.blood_group(class="uk-select") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.allergies.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.allergies(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ form.medical_history.label }}</label>
+                <div class="uk-form-controls">
+                    {{ form.medical_history(class="uk-textarea") }}
+                </div>
+            </div>
+            <button type="submit" class="uk-button uk-button-primary">Submit</button>
+    </form>
+
+    {% endif %}
+</div>
+{% endblock %}

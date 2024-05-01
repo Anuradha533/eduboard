@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Create Appointment{% endblock %}
+{% block content %}
+  <div class="uk-container uk-padding">
+        <h1 class="uk-heading-small">Create Appointment</h1>
+        <form method="POST" class="uk-form-stacked">
+            {{ form.hidden_tag() }}
+            
+            <div class="uk-margin">
+                {{ form.title.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.title(class="uk-input") }}
+                    {% for error in form.title.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+          
+            <div class="uk-margin">
+                {{ form.description.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.description(class="uk-textarea") }}
+                    {% for error in form.description.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+          
+            <div class="uk-margin">
+                {{ form.start_time.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.start_time(class="uk-input") }}
+                    {% for error in form.start_time.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+          
+            <div class="uk-margin">
+                {{ form.end_time.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.end_time(class="uk-input") }}
+                    {% for error in form.end_time.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+          
+            <div class="uk-margin">
+                {{ form.Teacher_id.label(class="uk-form-label") }}
+                <div class="uk-form-controls">
+                    {{ form.Teacher_id(class="uk-input") }}
+                    {% for error in form.Teacher_id.errors %}
+                        <span class="uk-text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+    
+            <div class="uk-margin">
+                <label class="uk-form-label">
+                    {{ form.skip_payment() }}
+                    {{ form.skip_payment.label }}
+                </label>
+                {% for error in form.skip_payment.errors %}
+                    <span class="uk-text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+          
+            <input type="hidden" name="user_id" value="{{ current_user.id }}">
+          
+            <button type="submit" class="uk-button uk-button-primary">Submit</button>
+        </form>
+    </div>
+    
+{% endblock %}

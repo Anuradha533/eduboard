@@ -1,0 +1,133 @@
+{
+    "student_allergies": [
+      {
+        "name": "Pollen Allergy",
+        "description": "An allergic reaction to pollen grains released by plants during pollination.",
+        "severity": "Moderate",
+        "symptoms": [
+          "Sneezing",
+          "Runny or stuffy nose",
+          "Watery or itchy eyes",
+          "Itchy throat or ears",
+          "Wheezing or coughing"
+        ],
+        "management": "Avoiding exposure to pollen, using air purifiers, taking antihistamines, and immunotherapy."
+      },
+      {
+        "name": "Food Allergy (e.g., Peanut)",
+        "description": "An adverse immune response to certain proteins found in peanuts, leading to various symptoms.",
+        "severity": "Severe",
+        "symptoms": [
+          "Skin reactions (hives, itching)",
+          "Digestive problems (nausea, vomiting, diarrhea)",
+          "Respiratory distress (difficulty breathing, wheezing)",
+          "Anaphylaxis (a severe, potentially life-threatening reaction)"
+        ],
+        "management": "Strict avoidance of peanuts and peanut products, carrying epinephrine auto-injectors, and seeking emergency medical care if exposed."
+      },
+      {
+        "name": "Drug Allergy (e.g., Penicillin)",
+        "description": "An adverse reaction to certain medications, such as penicillin, due to the immune system's response.",
+        "severity": "Variable",
+        "symptoms": [
+          "Skin rash or hives",
+          "Itching",
+          "Swelling of the face, lips, or tongue",
+          "Shortness of breath",
+          "Anaphylaxis"
+        ],
+        "management": "Avoiding the specific medication and informing healthcare providers of the allergy to prevent future exposure."
+      },
+      {
+        "name": "Insect Sting Allergy (e.g., Bee Sting)",
+        "description": "An allergic reaction to venom injected by stinging insects, such as bees or wasps.",
+        "severity": "Severe",
+        "symptoms": [
+          "Localized swelling, redness, and pain at the sting site",
+          "Hives or itching in other areas of the body",
+          "Difficulty breathing",
+          "Dizziness or fainting",
+          "Anaphylaxis"
+        ],
+        "management": "Avoiding insect stings, carrying epinephrine auto-injectors, wearing protective clothing, and seeking immediate medical attention if stung."
+      },
+      {
+        "name": "Animal Allergy (e.g., Pet Dander)",
+        "description": "An allergic reaction to proteins found in the skin cells, saliva, or urine of animals, such as cats or dogs.",
+        "severity": "Moderate",
+        "symptoms": [
+          "Sneezing",
+          "Runny or stuffy nose",
+          "Watery or itchy eyes",
+          "Skin rash or hives",
+          "Difficulty breathing (rare)"
+        ],
+        "management": "Reducing exposure to animals, keeping pets out of the bedroom, using air purifiers, and taking antihistamines."
+      },
+      {
+        "name": "Latex Allergy",
+        "description": "An allergic reaction to proteins found in natural rubber latex, commonly found in medical gloves, balloons, and condoms.",
+        "severity": "Variable",
+        "symptoms": [
+          "Skin reactions (rash, hives)",
+          "Itching",
+          "Swelling",
+          "Respiratory symptoms (wheezing, shortness of breath)",
+          "Anaphylaxis (in severe cases)"
+        ],
+        "management": "Avoiding latex products, using latex-free alternatives, and informing healthcare providers to prevent exposure."
+      },
+      {
+        "name": "Mold Allergy",
+        "description": "An allergic reaction to mold spores commonly found in damp environments, such as bathrooms, basements, and kitchens.",
+        "severity": "Moderate",
+        "symptoms": [
+          "Sneezing",
+          "Runny or stuffy nose",
+          "Coughing",
+          "Wheezing",
+          "Skin rash or irritation"
+        ],
+        "management": "Reducing indoor humidity levels, fixing water leaks, using air purifiers, and avoiding outdoor activities during high mold counts."
+      },
+      {
+        "name": "Hay Fever (Allergic Rhinitis)",
+        "description": "An allergic reaction to airborne allergens such as pollen, dust mites, or pet dander, causing inflammation of the nasal passages.",
+        "severity": "Variable",
+        "symptoms": [
+          "Sneezing",
+          "Runny or stuffy nose",
+          "Itchy or watery eyes",
+          "Postnasal drip",
+          "Fatigue"
+        ],
+        "management": "Avoiding allergens, using nasal sprays or antihistamines, and allergen immunotherapy in severe cases."
+      },
+      {
+        "name": "Shellfish Allergy",
+        "description": "An allergic reaction to proteins found in shellfish, including crustaceans like shrimp, crab, and lobster, as well as mollusks like clams, mussels, and oysters.",
+        "severity": "Severe",
+        "symptoms": [
+          "Skin reactions (hives, itching)",
+          "Digestive problems (nausea, vomiting, diarrhea)",
+          "Respiratory distress (wheezing, shortness of breath)",
+          "Anaphylaxis (potentially life-threatening)"
+        ],
+        "management": "Avoiding shellfish and related products, carrying epinephrine auto-injectors, and seeking immediate medical attention if exposed."
+      },
+      {
+        "name": "Dust Mite Allergy",
+        "description": "An allergic reaction to tiny bugs called dust mites, commonly found in bedding, upholstered furniture, and carpeting.",
+        "severity": "Moderate",
+        "symptoms": [
+          "Sneezing",
+          "Runny or stuffy nose",
+          "Itchy or watery eyes",
+          "Coughing",
+          "Wheezing or difficulty breathing"
+        ],
+        "management": "Using allergen-proof bedding, vacuuming regularly, reducing indoor humidity, and using air purifiers."
+      }
+    ]
+  }
+  

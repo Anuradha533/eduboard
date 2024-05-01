@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ selected_assignment.title }}{% endblock %}
+{% block content %}
+<h1>{{ selected_assignment.title }}</h1>
+<p>Description: {{ selected_assignment.description }}</p>
+<p>Due Date: {{ selected_assignment.due_date }}</p>
+<p>Class: {{ selected_assignment.assigned_class.title }}</p>
+<a href="{{url_for('classes.edit_assignment',assignment_id=selected_assignment.id)}}">Edit Assignment</a>
+
+{% endblock %}

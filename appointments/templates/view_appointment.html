@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1>Appointment Details</h1>
+    <p><strong>{{ appointment.title }}</strong></p>
+    <small>{{ appointment.description }}</small><br><br>
+    <small><strong>Start Time:</strong> {{ appointment.start_time }}</small><br>
+    <small><strong>End Time:</strong> {{ appointment.end_time }}</small><br>
+    <small><strong>Teacher:</strong> {{ appointment.Teacher.full_name }}</small><br>
+    <small><strong>Total Price:</strong> {{ appointment.total_price }}</small><br>
+    <small><strong>Status:</strong> {% if appointment.paid %}Paid{% else %}Unpaid{% endif %}</small><br><br>
+
+    <!-- Link to reschedule appointment -->
+    <a href="{{ url_for('appointments.reschedule_appointment', appointment_id=appointment.id) }}">Reschedule Appointment</a>
+
+    <!-- Link to cancel appointment -->
+    <a href="{{ url_for('appointments.cancel_appointment', appointment_id=appointment.id) }}">Cancel Appointment</a>
+{% endblock %}

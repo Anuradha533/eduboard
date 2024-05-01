@@ -1,0 +1,184 @@
+{
+  "Teacher_specialties": [
+    {
+      "name": "Computer Science",
+      "description": "Covers the study of computation, algorithms, programming languages, software development, and computer systems.",
+      "sub_specialties": [
+        "Artificial Intelligence",
+        "Data Science",
+        "Cybersecurity"
+      ]
+    },
+    {
+      "name": "Psychology",
+      "description": "Focuses on understanding behavior and mental processes.",
+      "sub_specialties": [
+        "Clinical Psychology",
+        "Cognitive Psychology",
+        "Developmental Psychology"
+      ]
+    },
+    {
+      "name": "Civil Engineering",
+      "description": "Deals with the design, construction, and maintenance of infrastructure projects.",
+      "sub_specialties": [
+        "Structural Engineering",
+        "Transportation Engineering",
+        "Environmental Engineering"
+      ]
+    },
+    {
+      "name": "English Literature",
+      "description": "Explores the study of literature written in the English language.",
+      "sub_specialties": [
+        "American Literature",
+        "British Literature",
+        "Comparative Literature"
+      ]
+    },
+    {
+      "name": "Biology",
+      "description": "Focuses on the study of living organisms and their interactions with the environment.",
+      "sub_specialties": [
+        "Genetics",
+        "Ecology",
+        "Microbiology"
+      ]
+    },
+    {
+      "name": "History",
+      "description": "Explores past events, societies, and cultures.",
+      "sub_specialties": [
+        "Ancient History",
+        "Medieval History",
+        "Modern History"
+      ]
+    },
+    {
+      "name": "Mathematics",
+      "description": "Studies patterns, structures, and relationships.",
+      "sub_specialties": [
+        "Algebra",
+        "Calculus",
+        "Statistics"
+      ]
+    },
+    {
+      "name": "Chemistry",
+      "description": "Deals with the composition, structure, and properties of matter.",
+      "sub_specialties": [
+        "Organic Chemistry",
+        "Inorganic Chemistry",
+        "Physical Chemistry"
+      ]
+    },
+    {
+      "name": "Physics",
+      "description": "Studies matter, energy, and their interactions.",
+      "sub_specialties": [
+        "Astrophysics",
+        "Quantum Mechanics",
+        "Nuclear Physics"
+      ]
+    },
+    {
+      "name": "Sociology",
+      "description": "Analyzes social behavior, structures, and institutions.",
+      "sub_specialties": [
+        "Criminology",
+        "Demography",
+        "Social Stratification"
+      ]
+    },
+    {
+      "name": "Education",
+      "description": "Focuses on teaching and learning processes.",
+      "sub_specialties": [
+        "Curriculum Development",
+        "Educational Psychology",
+        "Special Education"
+      ]
+    },
+    {
+      "name": "Business Administration",
+      "description": "Deals with managing and operating organizations.",
+      "sub_specialties": [
+        "Finance",
+        "Marketing",
+        "Human Resources"
+      ]
+    },
+    {
+      "name": "Political Science",
+      "description": "Studies government systems, political behavior, and power dynamics.",
+      "sub_specialties": [
+        "International Relations",
+        "Comparative Politics",
+        "Public Policy"
+      ]
+    },
+    {
+      "name": "Art",
+      "description": "Explores creative expression and aesthetic principles.",
+      "sub_specialties": [
+        "Painting",
+        "Sculpture",
+        "Photography"
+      ]
+    },
+    {
+      "name": "Economics",
+      "description": "Analyzes production, distribution, and consumption of goods and services.",
+      "sub_specialties": [
+        "Microeconomics",
+        "Macroeconomics",
+        "Development Economics"
+      ]
+    },
+    {
+      "name": "Anthropology",
+      "description": "Studies human societies and cultures.",
+      "sub_specialties": [
+        "Archaeology",
+        "Cultural Anthropology",
+        "Biological Anthropology"
+      ]
+    },
+    {
+      "name": "Philosophy",
+      "description": "Explores fundamental questions about existence, knowledge, values, reason, mind, and language.",
+      "sub_specialties": [
+        "Ethics",
+        "Metaphysics",
+        "Logic"
+      ]
+    },
+    {
+      "name": "Music",
+      "description": "Studies sound, rhythm, melody, and harmony.",
+      "sub_specialties": [
+        "Music Theory",
+        "Composition",
+        "Musicology"
+      ]
+    },
+    {
+      "name": "Environmental Science",
+      "description": "Examines the natural environment and interactions between the biotic and abiotic factors.",
+      "sub_specialties": [
+        "Climate Science",
+        "Ecotoxicology",
+        "Conservation Biology"
+      ]
+    },
+    {
+      "name": "Communications",
+      "description": "Studies the creation, distribution, and reception of information.",
+      "sub_specialties": [
+        "Media Studies",
+        "Public Relations",
+        "Journalism"
+      ]
+    }
+  ]
+}

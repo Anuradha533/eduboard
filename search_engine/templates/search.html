@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+{% block head %}
+
+{% endblock %}    
+    {% if not current_user.is_Teacher %}
+    <div class="uk-container uk-container-xsmall uk-padding">
+        <h2 class="uk-heading-medium">Search for Teachers</h2>
+
+        <form action="{{ url_for('search.home') }}" method="POST" class="uk-form-stacked">
+            {{ Teacher_form.csrf_token }}
+            {{ Teacher_form.hidden_tag() }}
+
+            <div class="uk-margin">
+                {{ Teacher_form.specialty.label(class="uk-form-label") }} 
+                <div class="uk-form-controls">
+                    {{ Teacher_form.specialty(class="uk-select") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                {{ Teacher_form.location.label(class="uk-form-label") }} 
+                <div class="uk-form-controls">
+                    {{ Teacher_form.location(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                {{ Teacher_form.experience.label(class="uk-form-label") }} 
+                <div class="uk-form-controls">
+                    {{ Teacher_form.experience(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                {{ Teacher_form.fee.label(class="uk-form-label") }} 
+                <div class="uk-form-controls">
+                    {{ Teacher_form.fee(class="uk-input") }}
+                </div>
+            </div>
+            
+            <div class="uk-margin">
+                <button type="submit" class="uk-button uk-button-primary">Search Teachers</button>
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <div class="uk-container uk-container-xsmall uk-padding">
+        <h2 class="uk-heading-medium">Search for Students</h2>
+        <form action="{{ url_for('search.home') }}" method="POST" class="uk-form-stacked">
+            {{ student_form.csrf_token }}
+            {{ student_form.hidden_tag() }}
+
+            <div class="uk-margin">
+                {{ student_form.blood_group.label(class="uk-form-label") }} 
+                <div class="uk-form-controls">
+                    {{ student_form.blood_group(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                {{ student_form.allergies.label(class="uk-form-label") }} 
+                <div class="uk-form-controls">
+                    {{ student_form.allergies(class="uk-input") }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                {{ student_form.medical_history.label(class="uk-form-label") }} 
+                <div class="uk-form-controls">
+                    {{ student_form.medical_history(class="uk-input") }}
+                </div>
+            </div>
+            
+            <div class="uk-margin">
+                <button type="submit" class="uk-button uk-button-primary">Search Students</button>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+
+      
+{% endblock %}

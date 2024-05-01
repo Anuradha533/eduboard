@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EduBoard University</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/js/uikit-icons.min.js"></script>
+    <style>
+      /* Custom styles */
+      body {
+        font-family: 'Georgia', serif;
+        color: #333;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Garamond', serif;
+        color: #002855;
+      }
+      .uk-navbar-container {
+        background-color: #002855;
+      }
+      .uk-navbar-item, .uk-navbar-nav > li > a {
+        color: #fff;
+        font-weight: bold;
+      }
+      .uk-button-primary {
+        background-color: #002855;
+      }
+      .uk-section-muted {
+        background-color: #f5f5f5;
+      }
+      .uk-card-default {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .image-150x50 {
+          max-width: 150px;
+          max-height: 50px;
+          width: auto;
+          height: auto;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+      <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="{{ url_for('views.index') }}"><img src="{{ url_for('views.static', filename='eduboard_logo_white_transparent.png') }}" alt="EduBoard University" class="image-150x50 uk-margin-left"></a>
+      </div>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav uk-margin-right">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Academics</a></li>
+          <li><a href="#">Campus Life</a></li>
+          <li><a href="#">Admissions</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="uk-section uk-section-primary uk-light uk-background-cover" data-src="{{ url_for('views.static', filename='background.jpg') }}" uk-img>
+      <div class="uk-container uk-container-small">
+        <h1 class="uk-heading-primary">Eduboard</h1>
+        <p class="uk-text-lead">Simplifying classroom connectivity.</p>
+        <a class="uk-button uk-button-default" href="{{ url_for('auth.register') }}">Apply Now</a>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="uk-section uk-section-default">
+      <div class="uk-container uk-container-small">
+        <h2 class="uk-heading-line"><span>Our Commitment</span></h2>
+        <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+          <div>
+            <div class="uk-card uk-card-default uk-card-body">
+              <span uk-icon="icon: world; ratio: 2"></span>
+              <h3 class="uk-card-title">Global Perspective</h3>
+              <p>We foster a diverse and inclusive community that embraces different cultures and perspectives.</p>
+            </div>
+          </div>
+          <div>
+            <div class="uk-card uk-card-default uk-card-body">
+              <span uk-icon="icon: star; ratio: 2"></span>
+              <h3 class="uk-card-title">Academic Excellence</h3>
+              <p>Our rigorous academic programs are taught by renowned faculty members who are leaders in their fields.</p>
+            </div>
+          </div>
+          <div>
+            <div class="uk-card uk-card-default uk-card-body">
+              <span uk-icon="icon: users; ratio: 2"></span>
+              <h3 class="uk-card-title">Supportive Community</h3>
+              <p>We foster a nurturing environment where students can thrive academically, socially, and personally.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="uk-section uk-section-muted">
+      <div class="uk-container uk-container-small">
+        <h2 class="uk-heading-line"><span>Join the EduBoard University Community</span></h2>
+        <p class="uk-text-lead">Join Eduboard and simplify your coursework effortlessly! Login or register today for a smoother learning experience.</p>
+        <a class="uk-button uk-button-primary" href="{{ url_for('auth.register') }}">Apply Now</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="uk-section uk-section-secondary uk-light">
+      <div class="uk-container uk-container-small">
+        <p>&copy; 2024 EduBoard University. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "58b1d8e430c44d658953cd1a97201c52"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

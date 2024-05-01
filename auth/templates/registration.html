@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="uk-container uk-container-xsmall uk-padding">
+  <form method="POST" action="{{ url_for('auth.register') }}" class="uk-form-stacked">
+      <legend class="uk-legend">Register</legend>
+      {{ form.hidden_tag() }}
+      <div class="uk-margin">
+          {{ form.email.label(class="uk-form-label") }}
+          <div class="uk-form-controls">
+              {{ form.email(class="uk-input") }}
+              {% for error in form.email.errors %}
+                  <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      </div>
+      <div class="uk-margin">
+          {{ form.password.label(class="uk-form-label") }}
+          <div class="uk-form-controls">
+              {{ form.password(class="uk-input") }}
+              {% for error in form.password.errors %}
+                  <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      </div>
+      <div class="uk-margin">
+          {{ form.confirm_password.label(class="uk-form-label") }}
+          <div class="uk-form-controls">
+              {{ form.confirm_password(class="uk-input") }}
+              {% for error in form.confirm_password.errors %}
+                  <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+          </div>
+      </div>
+      <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+          <label>
+              {{ form.is_Teacher(class="uk-checkbox uk-margin-small-right") }}
+              {{ form.is_Teacher.label }}  
+          </label>
+      </div>
+      <div class="uk-margin">
+          <a href="{{url_for('auth.login')}}" class="uk-margin-small-right">Login</a>
+          {{ form.submit(class="uk-button uk-button-primary") }}
+      </div>
+  </form>
+</div>
+
+{% endblock %}

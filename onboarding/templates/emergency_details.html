@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="uk-container uk-container-xsmall uk-padding">
+    <form method="POST" action="" class="uk-form-stacked">
+        <legend class="uk-legend">Student Emergency Details</legend>
+        {{ form.hidden_tag() }}
+        <div class="uk-margin">
+            {{ form.emergency_contact_name.label(class="uk-form-label") }}
+            <div class="uk-form-controls">
+                {{ form.emergency_contact_name(class="uk-input") }}
+                {% for error in form.emergency_contact_name.errors %}
+                    <span class="uk-text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="uk-margin">
+            {{ form.emergency_contact_relationship.label(class="uk-form-label") }}
+            <div class="uk-form-controls">
+                {{ form.emergency_contact_relationship(class="uk-input") }}
+                {% for error in form.emergency_contact_relationship.errors %}
+                    <span class="uk-text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="uk-margin">
+            {{ form.emergency_contact_phone.label(class="uk-form-label") }}
+            <div class="uk-form-controls">
+                {{ form.emergency_contact_phone(class="uk-input") }}
+                {% for error in form.emergency_contact_phone.errors %}
+                    <span class="uk-text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="uk-margin">
+            {{ form.additional_notes.label(class="uk-form-label") }}
+            <div class="uk-form-controls">
+                {{ form.additional_notes(class="uk-input") }}
+                {% for error in form.additional_notes.errors %}
+                    <span class="uk-text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="uk-margin">
+            <button type="submit" class="uk-button uk-button-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

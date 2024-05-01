@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/css/uikit.min.css" />
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.7.0.js"></script>
+
+    <script src="{{ url_for('video.static', filename='agora-rtm.js') }}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('video.static', filename='video.css') }}"/>
+
+    <style>
+        /* Custom styles */
+        body {
+          font-family: 'Georgia', serif;
+          color: #333;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'Garamond', serif;
+          color: #002855;
+        }
+        .uk-navbar-container {
+          background-color: #002855;
+        }
+        .uk-navbar-item, .uk-navbar-nav > li > a {
+          color: #fff;
+          font-weight: bold;
+        }
+        .uk-button-primary {
+          background-color: #002855;
+        }
+        .uk-section-muted {
+          background-color: #f5f5f5;
+        }
+        .uk-card-default {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .image-150x50 {
+          max-width: 150px;
+          max-height: 50px;
+          width: auto;
+          height: auto;
+      }
+
+      .avatar {
+          max-width: 50px;
+          width: auto;
+          height: auto;
+      }
+      </style>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+    <header>
+        <nav class="uk-navbar-container uk-navbar-transparent" uk-dropnav>
+            <div class="uk-container">
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="{{ url_for('views.index') }}"><img src="{{ url_for('views.static', filename='eduboard_logo_white_transparent.png') }}" alt="EduBoard University" class="image-150x50 uk-margin-left"></a>
+                  </div>
+                <div class="uk-navbar-right">
+                    {% if current_user.is_authenticated %}
+                    <ul class="uk-subnav">
+                        <li><a href="{{url_for('views.home')}}">Home</a></li>
+                        <li>
+                            <a href>Appointments <span uk-drop-parent-icon></span></a>
+                            <div class="uk-dropdown">
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    {% if current_user.is_Teacher %}
+                                    <li><a href="{{ url_for('appointments.get_appointments') }}"> View Appointments</a></li>
+
+                                        <li><a href="{{url_for('search.home')}}">Find a student</a></li>
+                                    {% else %}
+                                        <li><a href="{{url_for('search.home')}}">Find a Teacher</a></li>
+                                        <li><a href="{{url_for('appointments.create_appointment')}}">Create Appointment</a></li>
+                                        <li><a href="{{url_for('appointments.get_appointments')}}">View Appointments</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href>Notifications 
+                                <span uk-drop-parent-icon></span>
+                                <span id="notification-badge"  class="uk-badge">1</span>
+ 
+                              </a>
+                              <div id="notification-dropdown" class="uk-dropdown">
+                                <ul id="notification-list" class="uk-nav uk-dropdown-nav">
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href>Profile Management <span uk-drop-parent-icon></span></a>
+                            <div class="uk-dropdown">
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li><a href="{{url_for('profile.view_profile')}}">View Profile</a></li>
+                                    <li><a href="{{url_for('profile.edit_profile')}}">Edit Profile</a></li>
+                                    {% if not current_user.is_Teacher %}
+                                    <li class="uk-nav-divider"></li>
+                                    <li><a href="{{url_for('profile.edit_emergency_details')}}">Edit Emergency details</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            {% if current_user.is_Teacher %}
+                            <a href>Your classes <span uk-drop-parent-icon></span></a>
+                            <div class="uk-dropdown">
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li><a href="{{url_for('classes.view_classes')}}">View classes</a></li>
+                                    <li><a href="{{url_for('classes.create_class')}}">Create new class</a></li>
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </li>
+                        <li><a href="{{url_for('video.index')}}">Virtual Meeting</a></li>
+                        <li><a href="{{url_for('chat.home')}}">In-Box</a></li>
+                        <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        
+    </header>
+    
+    <div class="uk-padding uk-margin">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="uk-alert-{{category}} uk-container" uk-alert>
+                    <a href class="uk-alert-close" uk-close></a>
+                    <p>{{ message }}</p>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+    
+    {% if current_user.is_authenticated %}
+    <script>
+        // Function to update the notification list
+        function updateNotificationList(notifications) {
+            const list = document.getElementById('notification-list');
+            list.innerHTML = ''; // Clear existing list items
+            
+            // Add new list items for each notification
+            notifications.forEach(notification => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.setAttribute('href', '#');
+                link.textContent = notification.message;
+                listItem.appendChild(link);
+                list.appendChild(listItem);
+                console.log(notification.message)
+            });
+        }
+    
+        // Function to update the notification badge
+        function updateNotificationBadge(count) {
+            const badge = document.getElementById('notification-badge');
+            badge.textContent = count;
+            badge.style.display = count > 0 ? 'block' : 'none'; // Show badge only if there are notifications
+        }
+    
+        
+        function initialize_notifications() {
+            let since = 0;
+            setInterval(async function() {
+                const response = await fetch('{{ url_for('chat.get_unread_notifications') }}');
+                const notifications = await response.json();
+                for (let i = 0; i < notifications.length; i++) {
+                    // Handle notifications here
+                    // You can append notifications to the dropdown or update notification count, etc.
+                    since = notifications[i].timestamp;
+                }
+                updateNotificationBadge(notifications.length); // Update the badge with the number of notifications
+                updateNotificationList(notifications); // Update the notification list
+            }, 10000);
+        }
+    
+        document.addEventListener('DOMContentLoaded', initialize_notifications);
+        
+    </script>
+    {% endif %}
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit-icons.min.js"></script>
+
+    <script>
+   
+    const AUTH_USER = "{{current_user.email}}";
+    const AUTH_USER_ID = "{{current_user.id}}";
+    const CSRF_TOKEN = "{{ csrf_token }}";
+    const AGORA_APP_ID = "{{agoraAppID}}";
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="{{ url_for('video.static', filename='video.js') }}"></script>
+
+
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="uk-container uk-container-expand uk-child-width-expand@s uk-child-width-1-3@m uk-grid-match uk-padding" uk-sortable uk-grid>
+
+        {% for appointment in appointments %}
+            <div>
+                <div class="uk-card uk-card-default uk-margin">
+                    {% if appointment.paid %}
+                    <div class="uk-card-badge uk-label">Paid</div>
+                    {% endif %}
+                    <div class="uk-card-header">
+                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                            <div class="uk-width-auto">
+                                <!-- Placeholder for Teacher avatar -->
+                                <span uk-icon="icon: user; ratio: 2"></span>
+
+                            </div>
+                            <div class="uk-width-expand">
+                                <!-- Title and date -->
+                                <h3 class="uk-card-title uk-margin-remove-bottom"><strong>{{ appointment.title }} {{appointment.user.icon}}</strong></h3>
+                                <p class="uk-text-meta uk-margin-remove-top">{{ appointment.start_time }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <p>{{ appointment.description }}</p>
+                    </div>
+                    <div class="uk-card-footer">
+                        <p>
+                        <!-- Link to view appointment -->
+                        <a class="uk-button uk-button-success" href="{{ url_for('appointments.view_appointment', appointment_id=appointment.id) }}"> View</a>
+                        <!-- Conditional link to pay for unpaid appointments -->
+                        {% if not appointment.paid %}
+                            <a class="uk-button uk-button-primary" href="{{ url_for('appointments.pay_appointment', appointment_id=appointment.id) }}">Pay</a>
+                        {% endif %}
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
